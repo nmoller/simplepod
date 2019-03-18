@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: phpmyadmin01
+  namespace: siad-moodle-dev-01
+  labels:
+    name: phpmyadmin
+spec:
+  containers:
+    - name: phpmyadmin
+      image: phpmyadmin/phpmyadmin
+      env:
+        - name: PMA_HOST
+          #value: mysql.siad-mahara-dev-01
+          value: galera-cluster.si.uqam.ca
+      ports:
+        - containerPort: 80
+          name: phpmyadmin
